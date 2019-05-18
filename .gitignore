@@ -1,0 +1,82 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@sebastiankozub 
+435
+7,101 2,654 OpenZeppelin/openzeppelin-solidity
+ Code  Issues 90  Pull requests 8  Projects 1  Wiki  Insights
+openzeppelin-solidity/.gitignore
+@frangio frangio New documentation setup (#1708)
+ed5652b 25 days ago
+@maraoz @frangio @cgewecke @spalladino @aupiff @shrugs @mswezey23 @nikeshnazareth
+47 lines (34 sloc)  468 Bytes
+    
+*.swp
+*.swo
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+allFiredEvents
+scTopics
+
+# Coverage directory used by tools like istanbul
+coverage
+coverage.json
+coverageEnv
+
+# node-waf configuration
+.lock-wscript
+
+# Dependency directory
+node_modules
+
+# Debug log from npm
+npm-debug.log
+
+# local env variables
+.env
+
+# truffle build directory
+build/
+
+# macOS
+.DS_Store
+
+# truffle
+.node-xmlhttprequest-*
+
+# IntelliJ IDE
+.idea
+
+# docsite artifacts
+docsite-build
+docs/api
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+
+#sebastian
+/bin/contracts/*sol-output.json
+/bin/contracts/*.bin
+/bin/contracts/*.abi
