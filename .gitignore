@@ -78,5 +78,3 @@ About
 
 #sebastian
 /bin/contracts/*sol-output.json
-/bin/contracts/*.bin
-/bin/contracts/*.abi
