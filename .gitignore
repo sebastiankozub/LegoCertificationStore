@@ -58,5 +58,6 @@ Blog
 About
 
 #sebastian
-bin/*
+bin
 node_modules/
+bin/contracts
