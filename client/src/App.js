@@ -40,13 +40,18 @@ class App extends Component {
 
     // Stores a given value, 5 by default.
     //await contract.methods.set(5).send({ from: accounts[0] });
-
     // Get the value from the contract to prove it worked.
     //const response = await contract.methods.get().call();
 
+    const response1 = await contract.methods.getCertificatesLength().call();
+    const response2 = await contract.methods.createNewCertificate("12gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","12gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg1"]).call();
+    const response3 = await contract.methods.createNewCertificate("23gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","23gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg2"]).call();
     const response = await contract.methods.getCertificatesLength().call();
-    //const response = await contract.methods.createNewCertificate("gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg"]).call();
-
+    
+    console.log(response1);
+    console.log(response2); 
+    console.log(response3); 
+    console.log(response); 
     // Update state with the result.
     this.setState({ storageValue: response });
   };

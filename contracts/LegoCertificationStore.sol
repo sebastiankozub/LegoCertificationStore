@@ -2,10 +2,21 @@ pragma solidity ^0.5.2;
 pragma experimental ABIEncoderV2;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Secondary.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
+import "./helper.sol";
+
+contract Callee {
+    function getValue(uint initialValue) external returns(uint);
+    function storeValue(uint value) external;
+    function getValues() external returns(uint);
+}
+
 contract LegoCertificationStore is Ownable {
+
     using SafeMath for uint256;
+    using Helper for uint256;
 
     struct LegoCertificate {
         string name;
@@ -20,6 +31,8 @@ contract LegoCertificationStore is Ownable {
     event NewCertificate(uint certificateId, string name, string number,
         string theme, string subtheme, string descritpion, string bricksJsonData, uint dna);
 
+    Callee linkedContract;
+
     LegoCertificate[] public certificates;
 
     mapping (uint => address) private certificateToOwner;
@@ -28,8 +41,35 @@ contract LegoCertificationStore is Ownable {
     uint public dnaDigits = 256;
     uint public dnaModulus = (2 ** dnaDigits) - 1;
 
-    constructor() Ownable() public {
+    constructor(address addr) Ownable() public {
         certificates.length = 0;
+        linkedContract = Callee(addr);
+    }
+
+    function  someAction() private returns(uint) {
+        return linkedContract.getValue(100);
+    }
+
+    function storeAction(address addr) private returns(uint) {
+        Callee c = Callee(addr);
+        c.storeValue(100);
+        return c.getValues();
+    }
+
+    function someUnsafeAction(address addr) private {
+        bool status;
+        bytes memory result;
+        (status, result) = addr.call(
+            abi.encode(bytes4(keccak256("storeValue(uint256)")), 100)
+            );
+    }
+
+    function delegatedCalculation(uint firstNumber, uint secondNumber) public {
+        bool status;
+        bytes memory result;
+        (status, result) = address(linkedContract).delegatecall(
+            abi.encodePacked(bytes4(keccak256("calculate(uint256,uint256)")), firstNumber, secondNumber)
+            );
     }
 
     //"gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg"]
@@ -43,7 +83,8 @@ contract LegoCertificationStore is Ownable {
         string[] memory _bricks,
         string[] memory _registers) public {
         // IF dnaModulus == (2 ** dnaDigits) - 1; DOES NOT CUT THE NUMBER
-        uint randDna = _generateRandomDna(_name, _descritpion, _bricksJsonData);
+        uint randDna;
+        uint = randDna.generateRandomDna(_name, _descritpion, _bricksJsonData, dnaModulus);
         _createCertificate(_name, _number, _theme, _subtheme, _descritpion, _bricksJsonData, randDna);
     }
 
@@ -94,12 +135,5 @@ contract LegoCertificationStore is Ownable {
             }
         }
         return _ids;
-    }
-
-    function _generateRandomDna(string memory _str1, string memory _str2, string memory _str3) private view returns (uint _dna) {
-        uint rand1 = uint(keccak256(abi.encodePacked(_str1)));
-        uint rand2 = uint(keccak256(abi.encodePacked(_str2)));
-        uint rand3 = uint(keccak256(abi.encodePacked(_str3)));
-        return ((rand1 + rand2 - rand3) * rand3) % dnaModulus;
     }
 }
