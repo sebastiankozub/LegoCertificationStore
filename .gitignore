@@ -1,3 +1,7 @@
+#sebastian
+bin/
+bin/contracts/
+
 *.swp
 *.swo
 
@@ -56,8 +60,3 @@ API
 Training
 Blog
 About
-
-#sebastian
-bin
-node_modules/
-bin/contracts
