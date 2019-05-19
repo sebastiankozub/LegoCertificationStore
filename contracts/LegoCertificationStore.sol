@@ -39,7 +39,10 @@ contract LegoCertificationStore is Ownable {
         string memory _theme,
         string memory _subtheme,
         string memory _descritpion,
-        string memory _bricksJsonData, string[] memory _bricks, string[] memory _registers) public {
+        string memory _bricksJsonData,
+        string[] memory _bricks,
+        string[] memory _registers) public {
+        // IF dnaModulus == (2 ** dnaDigits) - 1; DOES NOT CUT THE NUMBER
         uint randDna = _generateRandomDna(_name, _descritpion, _bricksJsonData);
         _createCertificate(_name, _number, _theme, _subtheme, _descritpion, _bricksJsonData, randDna);
     }
@@ -57,24 +60,21 @@ contract LegoCertificationStore is Ownable {
         emit NewCertificate(id, _name, _number, _theme, _subtheme, _descritpion, _bricksJsonData, _dna);
     }
 
-    function getOwnedCertificatesCount(address _address) public view returns (uint _count) {
+    function getOwnedCertificatesCountByAddress(address _address) public view returns (uint _count) {
         return ownedCertificatesCount[_address];
     }
 
-    function getCertificatesLength() public view returns(uint){
+    function getOwnedCertificatesCount() public view returns (uint _count) {
+        return ownedCertificatesCount[msg.sender];
+    }
+
+    function getCertificatesCount() public view returns(uint){
         return certificates.length;
     }
 
     function  getOwnedCertificates(address _address) public view returns (LegoCertificate[] memory _certificates) {
-        uint length = getCertificatesLength();
-        uint counter = 0;
-        for(uint i = 0; i < length; i++){
-            if(_address == certificateToOwner[i])
-            {
-                counter++;
-            }
-        }
-        _certificates = new LegoCertificate[](counter);
+        uint length = getCertificatesCount();
+        _certificates = new LegoCertificate[](getOwnedCertificatesCountByAddress(_address));
         for(uint i = 0; i < length; i++){
             if(_address == certificateToOwner[i])
             {
@@ -85,15 +85,8 @@ contract LegoCertificationStore is Ownable {
     }
 
     function  getOwnedCertificatesIds(address _address) public view returns (uint[] memory _ids) {
-        uint length = getCertificatesLength();
-        uint counter = 0;
-        for (uint i = 0; i < length; i++) {
-            if(_address == certificateToOwner[i])
-            {
-                counter++;
-            }
-        }
-        _ids = new uint[](counter);
+        uint length = getCertificatesCount();
+        _ids = new uint[](getOwnedCertificatesCountByAddress(_address));
         for (uint i = 0; i < length; i++) {
             if(_address == certificateToOwner[i])
             {
