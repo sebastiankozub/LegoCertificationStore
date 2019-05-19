@@ -1,9 +1,9 @@
 #sebastian
-bin/*
+bin/*.*
 bin/contracts/*.bin
 bin/contracts/*.abi
 bin/contracts/*.json
-
+.vscode/*.*
 *.swp
 *.swo
 
