@@ -1,6 +1,8 @@
 #sebastian
-bin/
-bin/contracts/
+bin/*
+bin/contracts/*.bin
+bin/contracts/*.abi
+bin/contracts/*.json
 
 *.swp
 *.swo
