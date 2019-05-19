@@ -11,10 +11,11 @@
  *     gasPrice: 10000000000,
  *   },
  */
+const path = require("path");
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
-  // to customize your Truffle configuration!
+  // to customize your Truffle configuration!  
   networks: {
     development: {
       host: "127.0.0.1",
@@ -26,5 +27,6 @@ module.exports = {
         version: "0.5.2",
       }
     }
-  }
+  },
+  contracts_build_directory: path.join(__dirname, "client/src/contracts")
 }
