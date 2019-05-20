@@ -5,16 +5,17 @@ This project was created using few external tools and libraries. To run it, plea
 ## Tools installation
 
 ### `npm`
+Istall node.js and npm should be there.
 ### `truffle`
-
+Compile, depoy and test. Install globally.
 ### `ganache`
-
+Running ethereum node and test blockchain. 
 ### `metamask`
-
+ETH wallet. Extension for your browser. Possibility to connect to test blockchain like loccally running ganache. 
 ### `open-zeppelin`
+Framework and library for smart contracts programming. Install locally in project dir. 
 
-
-### `npm`
+### `npm run start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
