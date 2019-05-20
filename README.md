@@ -5,9 +5,9 @@ This project was created using few external tools and libraries. To run it, plea
 ## Tools installation
 
 ### `npm`
-Istall node.js and npm should be there.
+Istall node.js and npm should be there. 
 ### `truffle`
-Compile, depoy and test. Install globally.
+Compile, depoy and test framework for Solidity. Install globally. 
 ### `ganache`
 Running ethereum node and test blockchain. 
 ### `metamask`
