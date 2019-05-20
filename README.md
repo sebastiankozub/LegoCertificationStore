@@ -15,6 +15,8 @@ ETH wallet. Extension for your browser. Possibility to connect to test blockchai
 ### `open-zeppelin`
 Framework and library for smart contracts programming. Install locally in project dir. 
 
+## Tools usage
+
 ### `npm run start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
