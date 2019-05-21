@@ -7,6 +7,13 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 contract LegoCertificationStore is Ownable {
     using SafeMath for uint256;
 
+    //"gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg"]  // copy-paste into remix :)
+
+    // TODO //
+    // 1. methods to pass certificate's ownership
+    // 2. starts to be similar to ERC721?
+    // 3.
+
     struct LegoCertificate {
         string name;
         string number;
@@ -31,8 +38,6 @@ contract LegoCertificationStore is Ownable {
     constructor() Ownable() public {
         certificates.length = 0;
     }
-
-    //"gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg","gdsfgdsfg",["gdsfgdsfg"],["gdsfgdsfg"]
 
     function createNewCertificate(string memory _name,
         string memory  _number,
