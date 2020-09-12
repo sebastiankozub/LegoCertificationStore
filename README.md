@@ -5,13 +5,13 @@ This project was created using few external tools and libraries. To run it, plea
 ## Tools installation
 
 ### `npm`
-Istall node.js and npm should be there. 
+Install node.js and npm should be there included by default. 
 ### `truffle`
 Compile, depoy and test framework for Solidity. Install globally. 
 ### `ganache`
 Running ethereum node and test blockchain. 
 ### `metamask`
-ETH wallet. Extension for your browser. Possibility to connect to test blockchain like loccally running ganache. 
+ETH wallet. Extension for your browser. Possibility to connect to test blockchain like loccally running ganache. Of course you need to have MetaMask compatibile browser also. 
 ### `open-zeppelin`
 Framework and library for smart contracts programming. Install locally in project dir. 
 
