@@ -11,7 +11,7 @@ Compile, depoy and test framework for Solidity. Install globally.
 ### `ganache`
 Running ethereum node and test blockchain. 
 ### `metamask`
-ETH wallet. Extension for your browser. Possibility to connect to test blockchain like loccally running ganache. Of course you need to have MetaMask compatibile browser also. 
+ETH wallet. Extension for your browser. Possibility to connect to test blockchain like loccally running ganache. Of course you need to have MetaMask compatible browser also. 
 ### `open-zeppelin`
 Framework and library for smart contracts programming. Install locally in project dir. 
 
